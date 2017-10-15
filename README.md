@@ -24,5 +24,8 @@ To implement the driver in the library you should extend the `eu.vranckaert.touc
 
 Next you need a `eu.vranckaert.touch.profile.DriverProfile` which needs a `Vendor` (or `Vendor.UNKNOWN` in case your vendor is not yet listed), and a `ScreenDimension` specifying the width, height and screen ratio. The `Ratio` is an enum with fixed ratio values, or again a `Ratio.UNKNOWN` if the ratio is not yet listed.
 
+### Demo
+There's a demo module to test your drivers immediately. The demo contains a splash screen, some default Android controls ideally to test touch inputs (a slider, a switch and buttons) and a 'Touch Debugging' mode, when enabled drives a circle on the touch position that you discover from the display. This way you can almost perfect calibrate the driver against the specific display!
+
 ## Contributing
 I would like to see new drivers added to this library. So please let me knonw or please contribute to the code base to get your dirver added!
