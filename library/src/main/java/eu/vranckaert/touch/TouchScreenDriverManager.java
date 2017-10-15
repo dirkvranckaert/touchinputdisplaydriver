@@ -3,7 +3,7 @@ package eu.vranckaert.touch;
 import android.app.Application;
 import android.content.Intent;
 
-import eu.vranckaert.touch.profile.WaveshareProfile;
+import eu.vranckaert.touch.profile.DriverProfile;
 
 /**
  * Created by dirkvranckaert on 15/10/2017.
@@ -23,17 +23,21 @@ public class TouchScreenDriverManager {
     }
 
 
-    public void createDriver(Application application) {
+    public void createDriver(Application application, TouchScreenDriverProfileHandler profileHandler) {
         mTouchScreenDriverIntent = new Intent(application.getApplicationContext(), TouchScreenDriverService.class);
-        mTouchScreenDriverIntent.putExtra(TouchScreenDriverService.PROFILE, WaveshareProfile.getInstance(WaveshareProfile.DIMENSION_800_480));
+        mTouchScreenDriverIntent.putExtra(TouchScreenDriverService.PROFILE, profileHandler.getDriverProfile());
         application.startService(mTouchScreenDriverIntent);
 
     }
 
-    public void stopDriver(Application application) {
+    public void unload(Application application) {
         if (mTouchScreenDriverIntent != null) {
             application.stopService(mTouchScreenDriverIntent);
         }
 
+    }
+
+    public interface TouchScreenDriverProfileHandler {
+        DriverProfile getDriverProfile();
     }
 }
