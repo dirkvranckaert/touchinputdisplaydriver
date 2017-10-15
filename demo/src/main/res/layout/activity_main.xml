@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="eu.vranckaert.things.test.MainActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/android_things_logo" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:src="@drawable/waving_android" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <SeekBar
+                android:layout_width="300dp"
+                android:layout_height="wrap_content" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchPadding="20dp"
+                android:text="on or off?" />
+
+            <Button
+                android:id="@+id/launch_touch_debug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Touch Debugging" />
+
+            <Button
+                android:id="@+id/hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Say It!" />
+
+            <EditText
+                android:id="@+id/hello_text"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Say Hello!"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:background="#44bcbcbc"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/vertical_margin"
+        android:paddingLeft="@dimen/horizontal_margin"
+        android:paddingRight="@dimen/horizontal_margin"
+        android:paddingTop="@dimen/vertical_margin">
+
+        <TextView
+            android:id="@+id/debug_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wifi: DNA" />
+
+        <TextView
+            android:id="@+id/debug_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="IP: 192.168.1.2" />
+    </LinearLayout>
+
+    <eu.vranckaert.things.test.TouchDebugView
+        android:id="@+id/touch_debug"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</FrameLayout>
