@@ -92,7 +92,7 @@
             tools:text="IP: 192.168.1.2" />
     </LinearLayout>
 
-    <eu.vranckaert.things.test.TouchDebugView
+    <eu.vranckaert.touch.demo.TouchDebugView
         android:id="@+id/touch_debug"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
