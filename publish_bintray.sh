@@ -1,0 +1,1 @@
+gradle clean assembleRelease javadocJar sourcesJar bintrayUpload

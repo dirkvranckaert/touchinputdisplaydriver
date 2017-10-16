@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "eu.vranckaert.touch.demo"
+        applicationId "eu.vranckaert.driver.touch.demo"
         minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
@@ -26,5 +26,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compileOnly 'com.google.android.things:androidthings:+'
-    implementation project(':library')
+    implementation project(':touch')
 }

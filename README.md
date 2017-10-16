@@ -20,9 +20,9 @@ If you cannot extend your `Application` from the `TouchScreenDriverApplication` 
 ### Custom Drivers
 Adding a custom driver is really simple. The hardest part in a custom driver is knowing how to read from your touch input display.
 
-To implement the driver in the library you should extend the `eu.vranckaert.touch.driver.Driver` class or the `eu.vranckaert.touch.driver.SpiDriver` class in case your touch input display is SPI compatible. If your touch input display uses the XPT2046 touch controller you can even directly extend the `eu.vranckaert.touch.driver.XPT2046Driver` class. It's the driver class that will contain the reading/writing logic for your touch display.
+To implement the driver in the library you should extend the `eu.vranckaert.driver.touch.driver.Driver` class or the `eu.vranckaert.driver.touch.driver.SpiDriver` class in case your touch input display is SPI compatible. If your touch input display uses the XPT2046 touch controller you can even directly extend the `eu.vranckaert.driver.touch.driver.XPT2046Driver` class. It's the driver class that will contain the reading/writing logic for your touch display.
 
-Next you need a `eu.vranckaert.touch.profile.DriverProfile` which needs a `Vendor` (or `Vendor.UNKNOWN` in case your vendor is not yet listed), and a `ScreenDimension` specifying the width, height and screen ratio. The `Ratio` is an enum with fixed ratio values, or again a `Ratio.UNKNOWN` if the ratio is not yet listed.
+Next you need a `eu.vranckaert.driver.touch.profile.DriverProfile` which needs a `Vendor` (or `Vendor.UNKNOWN` in case your vendor is not yet listed), and a `ScreenDimension` specifying the width, height and screen ratio. The `Ratio` is an enum with fixed ratio values, or again a `Ratio.UNKNOWN` if the ratio is not yet listed.
 
 ### Demo
 There's a demo module to test your drivers immediately. The demo contains a splash screen, some default Android controls ideally to test touch inputs (a slider, a switch and buttons) and a 'Touch Debugging' mode, when enabled drives a circle on the touch position that you discover from the display. This way you can almost perfect calibrate the driver against the specific display!
