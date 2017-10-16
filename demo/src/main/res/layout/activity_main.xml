@@ -34,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:text="Touch Input Display Driver"
                 android:textSize="20sp"
-                android:layout_marginBottom="30dp"/>
+                android:layout_marginBottom="30dp"
+                android:textColor="@android:color/black"/>
 
             <SeekBar
                 android:layout_width="300dp"

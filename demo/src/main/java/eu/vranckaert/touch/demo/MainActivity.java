@@ -52,8 +52,6 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        setTitle("Welcome!");
-
         updateDebugInfo();
 
         findViewById(R.id.launch_touch_debug).setOnClickListener(new View.OnClickListener() {
@@ -108,7 +106,6 @@ public class MainActivity extends Activity {
         debugTimer = new CountDownTimer(2000, 100) {
             @Override
             public void onTick(long l) {
-                Log.d(LOG_TAG, "Waiting for debug update... (" + l + ")");
             }
 
             @Override
