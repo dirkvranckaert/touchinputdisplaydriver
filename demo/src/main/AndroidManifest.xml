@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application>
+    <application
+        android:name=".ThingsApplication">
         <uses-library android:name="com.google.android.things" />
 
         <activity

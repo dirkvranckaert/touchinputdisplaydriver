@@ -1,3 +1,24 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
+bintray {
+    // bintray.user and bintray.key in local.properties
+    configurations = ['archives']
+    pkg {
+        repo = 'GitHub'
+        name = 'eu.vranckaert.touch'
+        userOrg = user
+        licenses = ['GPL-3.0']
+        vcsUrl = 'https://github.com/dirkvranckaert/touchinputdisplaydriver.git'
+        version {
+            name = '1.0'
+            desc = 'Touch input display driver for Android Touch'
+            vcsTag = '1.0'
+        }
+    }
+}
+
 apply plugin: 'com.android.library'
 
 android {
