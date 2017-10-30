@@ -1,9 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
 
 
     defaultConfig {
@@ -84,6 +85,32 @@ def gitUrl = 'https://github.com/dirkvranckaert/touchinputdisplaydriver.git'   /
 group = "eu.vranckaert.driver"                      // Maven Group ID for the artifact
 project.version = "1.0.0"
 
+//install {
+//    repositories.mavenInstaller {
+//        pom.project {
+//            packaging 'aar'
+//            groupId 'eu.vranckaert.driver'
+//            artifactId 'touch'
+//            version project.version
+//            name 'TouchScreenDriver'
+//            url 'https://github.com/dirkvranckaert/touchinputdisplaydriver'
+//            inceptionYear '2017'
+//            licenses {
+//                license {
+//                    name 'GPL-3.0'
+//                    url 'https://www.gnu.org/licenses/gpl.txt'
+//                    distribution 'repo'
+//                }
+//            }
+//            scm {
+//                connection 'https://github.com/dirkvranckaert/touchinputdisplaydriver.git'
+//                developerConnection 'https://github.com/dirkvranckaert/touchinputdisplaydriver.git'
+//                url 'https://github.com/dirkvranckaert/touchinputdisplaydriver'
+//            }
+//        }
+//    }
+//}
+
 // https://github.com/bintray/gradle-bintray-plugin
 bintray {
     user = properties.getProperty("bintray.user")
@@ -99,10 +126,10 @@ bintray {
         licenses = ["GPL-3.0"]
         publish = true
         version {
-            name = '1.0.0'
+            name = project.version
             desc = 'Touch input display driver for Android Touch'
             released  = new Date()
-            vcsTag = '1.0.0'
+            vcsTag = project.version
             gpg {
                 sign = true //Determines whether to GPG sign the files. The default is false
                 passphrase = properties.getProperty("bintray.gpg.passphrase")
