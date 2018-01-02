@@ -8,7 +8,7 @@ Out of the box the following displays are supported, however the system is free 
 * Waveshare HDMI (Tested with a 5")
 ## Usage
 ### Gradle
-```compile 'eu.vranckaert.driver:touch:1.0.0'```
+```compile 'eu.vranckaert.driver:touch:1.0.1'```
 ### Default drivers
 You can use the library in two different ways:
 
