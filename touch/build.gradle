@@ -83,7 +83,7 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 def siteUrl = 'https://github.com/dirkvranckaert/touchinputdisplaydriver'      // Homepage URL of the library
 def gitUrl = 'https://github.com/dirkvranckaert/touchinputdisplaydriver.git'   // Git repository URL
 group = "eu.vranckaert.driver"                      // Maven Group ID for the artifact
-project.version = "1.0.0"
+project.version = "1.0.1"
 
 //install {
 //    repositories.mavenInstaller {
