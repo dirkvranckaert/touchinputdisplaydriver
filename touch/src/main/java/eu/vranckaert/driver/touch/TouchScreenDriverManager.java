@@ -26,7 +26,7 @@ public class TouchScreenDriverManager {
     public void createDriver(Application application, TouchScreenDriverProfileHandler profileHandler) {
         mTouchScreenDriverIntent = new Intent(application.getApplicationContext(), TouchScreenDriverService.class);
         mTouchScreenDriverIntent.putExtra(TouchScreenDriverService.PROFILE, profileHandler.getDriverProfile());
-        application.startService(mTouchScreenDriverIntent);
+        application.startForegroundService(mTouchScreenDriverIntent);
 
     }
 
