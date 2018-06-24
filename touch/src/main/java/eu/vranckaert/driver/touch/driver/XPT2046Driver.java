@@ -2,7 +2,7 @@ package eu.vranckaert.driver.touch.driver;
 
 import android.util.Log;
 
-import com.google.android.things.pio.PeripheralManagerService;
+import com.google.android.things.pio.PeripheralManager;
 import com.google.android.things.pio.SpiDevice;
 
 import java.io.IOException;
@@ -70,14 +70,16 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
 
     @Override
     public void open() throws UnableToOpenTouchDriverException {
-        PeripheralManagerService spiService = new PeripheralManagerService();
-        List<String> deviceList = spiService.getSpiBusList();
+        Log.i(LOG_TAG, "Opening SPI ");
+        PeripheralManager peripheralManager = PeripheralManager.getInstance();
+        List<String> deviceList = peripheralManager.getSpiBusList();
         if (!deviceList.isEmpty()) {
             Log.i(LOG_TAG, "List of available SPI devices: " + deviceList);
             if (deviceList.size() > 1) {
                 String spiName = deviceList.get(getSpiChannel());
                 try {
-                    mTouchscreen = spiService.openSpiDevice(spiName);
+                    Log.i(LOG_TAG, "Opening SPI: " + spiName);
+                    mTouchscreen = peripheralManager.openSpiDevice(spiName);
                     mTouchscreen.setFrequency(50000);
                     mTouchscreen.transfer(new byte[]{(byte) 0x80, (byte) 0x00, (byte) 0x000}, new byte[4], 1);
                 } catch (IOException e) {

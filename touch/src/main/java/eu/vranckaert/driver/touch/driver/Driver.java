@@ -1,11 +1,13 @@
 package eu.vranckaert.driver.touch.driver;
 
+import android.app.Service;
 import android.util.Log;
 import android.view.InputDevice;
 import android.view.MotionEvent;
 
-import com.google.android.things.userdriver.InputDriver;
+import com.google.android.things.userdriver.input.InputDriver;
 import com.google.android.things.userdriver.UserDriverManager;
+import com.google.android.things.userdriver.input.InputDriverEvent;
 
 import java.io.Serializable;
 
@@ -44,14 +46,19 @@ public abstract class Driver implements Serializable {
             Log.e(LOG_TAG, "The driver '" + driverProfile.getName() + "' seems to be unavailable!", e);
             stop();
         }
+        mInputDriver = new InputDriver.Builder()
 
-        mInputDriver = new InputDriver.Builder(InputDevice.SOURCE_TOUCHSCREEN)
+                //InputDevice.SOURCE_TOUCHSCREEN)
                 .setName(driverProfile.getName())
-                .setVersion(getVersion())
-                .setAbsMax(MotionEvent.AXIS_X, driverProfile.getScreenDimension().getWidth())
-                .setAbsMax(MotionEvent.AXIS_Y, driverProfile.getScreenDimension().getHeight())
+                //.setVersion(getVersion())
+                .setAxisConfiguration(MotionEvent.AXIS_X, 0, driverProfile.getScreenDimension().getWidth(),0,0)
+                .setAxisConfiguration(MotionEvent.AXIS_Y, 0, driverProfile.getScreenDimension().getHeight(),0,0)
+                //.setAbsMax(MotionEvent.AXIS_X, driverProfile.getScreenDimension().getWidth())
+                //.setAbsMax(MotionEvent.AXIS_Y, driverProfile.getScreenDimension().getHeight())
                 .build();
-        UserDriverManager.getManager().registerInputDriver(mInputDriver);
+
+        UserDriverManager manager = UserDriverManager.getInstance();
+        manager.registerInputDriver(mInputDriver);
         Log.i(LOG_TAG, "Touch Screen Driver registered!");
 
         Log.v(LOG_TAG, "Setting up input thread!");
@@ -61,7 +68,11 @@ public abstract class Driver implements Serializable {
                 while (!mInputThread.isInterrupted() && !mStopped) {
                     try {
                         TouchInput touchInput = getTouchInput();
-                        mInputDriver.emit(touchInput.x, touchInput.y, touchInput.touching);
+                        InputDriverEvent event = new InputDriverEvent();
+                        event.setPosition(MotionEvent.AXIS_X, touchInput.x);
+                        event.setPosition(MotionEvent.AXIS_Y, touchInput.y);
+                        event.setContact(true);
+                        mInputDriver.emit(event);
                     } catch (TouchDriverReadingException e) {
                         stop();
                     }
@@ -91,8 +102,8 @@ public abstract class Driver implements Serializable {
     public abstract int getVersion();
 
     public static class TouchInput {
-        private int x;
-        private int y;
+        int x;
+        int y;
         private boolean touching;
 
         public TouchInput(int x, int y, boolean touching) {
