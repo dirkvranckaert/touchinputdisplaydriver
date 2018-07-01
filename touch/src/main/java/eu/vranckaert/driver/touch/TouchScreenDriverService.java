@@ -1,5 +1,6 @@
 package eu.vranckaert.driver.touch;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -30,6 +31,14 @@ public class TouchScreenDriverService extends Service {
 
         mDriver = mDriverProfile.getDriver();
         mDriver.run();
+
+        Notification notification = new Notification.Builder(getApplicationContext())
+                .setChannelId("touchscrenn_display")
+                .setContentTitle("Start touch screen")
+                .setContentText("Start touch screen driver as Service.")
+                .setSmallIcon(1)
+                .build();
+        startForeground(2,notification);
 
         return super.onStartCommand(intent, flags, startId);
     }
