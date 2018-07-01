@@ -55,7 +55,7 @@ public class TouchScreenDriverService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
+        stopForeground(true);
         if (mDriver != null) {
             mDriver.close();
         }
