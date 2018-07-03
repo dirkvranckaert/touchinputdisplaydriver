@@ -10,7 +10,7 @@ import eu.vranckaert.driver.touch.driver.WaveshareXPT2046Driver;
  */
 
 public class WaveshareProfile extends SPIDriverProfile implements Serializable {
-    public static final ScreenDimension DIMENSION_800_480 = new ScreenDimension(800, 480, ScreenDimension.Ratio.R_4_3); // TOUCH_XPT2046
+    public static final ScreenDimension DIMENSION_800_480 = new ScreenDimension(800, 480, ScreenDimension.Ratio.R_16_9); // TOUCH_XPT2046
 
     public static WaveshareProfile INSTANCE;
 

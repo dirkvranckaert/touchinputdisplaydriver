@@ -1,8 +1,10 @@
 package eu.vranckaert.driver.touch.driver;
 
 import android.app.Service;
+import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.InputDevice;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.google.android.things.userdriver.input.InputDriver;
@@ -51,8 +53,11 @@ public abstract class Driver implements Serializable {
                 //InputDevice.SOURCE_TOUCHSCREEN)
                 .setName(driverProfile.getName())
                 //.setVersion(getVersion())
-                .setAxisConfiguration(MotionEvent.AXIS_X, 0, driverProfile.getScreenDimension().getWidth(),0,0)
-                .setAxisConfiguration(MotionEvent.AXIS_Y, 0, driverProfile.getScreenDimension().getHeight(),0,0)
+                .setAxisConfiguration(MotionEvent.AXIS_X, 0, driverProfile.getScreenDimension().getWidth(),
+                            10,0)
+                .setAxisConfiguration(MotionEvent.AXIS_Y, 0, driverProfile.getScreenDimension().getHeight(),
+                            10,0)
+                .setSupportedKeys(new int[] {KeyEvent.KEYCODE_ENTER})
                 //.setAbsMax(MotionEvent.AXIS_X, driverProfile.getScreenDimension().getWidth())
                 //.setAbsMax(MotionEvent.AXIS_Y, driverProfile.getScreenDimension().getHeight())
                 .build();
@@ -65,17 +70,22 @@ public abstract class Driver implements Serializable {
         mInputThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!mInputThread.isInterrupted() && !mStopped) {
-                    try {
-                        TouchInput touchInput = getTouchInput();
-                        InputDriverEvent event = new InputDriverEvent();
-                        event.setPosition(MotionEvent.AXIS_X, touchInput.x);
-                        event.setPosition(MotionEvent.AXIS_Y, touchInput.y);
-                        event.setContact(true);
-                        mInputDriver.emit(event);
-                    } catch (TouchDriverReadingException e) {
-                        stop();
-                    }
+                InputDriverEvent event = new InputDriverEvent();
+
+                while (!mInputThread.isInterrupted() && !mStopped) try {
+                    TouchInput touchInput = getTouchInput();
+                    Thread.sleep(20);
+                    event.clear();
+                    event.setPosition(MotionEvent.AXIS_X, touchInput.x);
+                    event.setPosition(MotionEvent.AXIS_Y, touchInput.y);
+                    event.setContact(touchInput.touching);
+                    mInputDriver.emit(event);
+
+
+                } catch (TouchDriverReadingException e) {
+                    stop();
+                } catch (InterruptedException e) {
+                    stop();
                 }
             }
         });
