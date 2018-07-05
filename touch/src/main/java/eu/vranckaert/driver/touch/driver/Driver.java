@@ -49,17 +49,11 @@ public abstract class Driver implements Serializable {
             stop();
         }
         mInputDriver = new InputDriver.Builder()
-
-                //InputDevice.SOURCE_TOUCHSCREEN)
-                .setName(driverProfile.getName())
-                //.setVersion(getVersion())
+                 .setName(driverProfile.getName())
                 .setAxisConfiguration(MotionEvent.AXIS_X, 0, driverProfile.getScreenDimension().getWidth(),
-                            10,0)
+                            15,0)
                 .setAxisConfiguration(MotionEvent.AXIS_Y, 0, driverProfile.getScreenDimension().getHeight(),
-                            10,0)
-                .setSupportedKeys(new int[] {KeyEvent.KEYCODE_ENTER})
-                //.setAbsMax(MotionEvent.AXIS_X, driverProfile.getScreenDimension().getWidth())
-                //.setAbsMax(MotionEvent.AXIS_Y, driverProfile.getScreenDimension().getHeight())
+                            15,0)
                 .build();
 
         UserDriverManager manager = UserDriverManager.getInstance();
@@ -74,17 +68,12 @@ public abstract class Driver implements Serializable {
 
                 while (!mInputThread.isInterrupted() && !mStopped) try {
                     TouchInput touchInput = getTouchInput();
-                    Thread.sleep(20);
                     event.clear();
                     event.setPosition(MotionEvent.AXIS_X, touchInput.x);
                     event.setPosition(MotionEvent.AXIS_Y, touchInput.y);
                     event.setContact(touchInput.touching);
                     mInputDriver.emit(event);
-
-
                 } catch (TouchDriverReadingException e) {
-                    stop();
-                } catch (InterruptedException e) {
                     stop();
                 }
             }

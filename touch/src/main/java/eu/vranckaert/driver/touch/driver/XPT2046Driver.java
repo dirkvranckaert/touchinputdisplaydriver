@@ -381,7 +381,6 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
         float halfScreenWidth = screenWidth / 2f;
         float halfScreenHeight = screenHeight / 2f;
 
-        int applicableXErrorMargin = 0;
 
         int yErrorMargin = 24;
         float halfYDistance = halfScreenHeight - yErrorMargin;
@@ -392,7 +391,7 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
         } else if (y > halfScreenHeight) {
             y = Math.min(screenHeight, y + applicableYErrorMargin);
         }
-        /*
+
         int xErrorMargin = 20;
         float halfXDistance = halfScreenWidth - xErrorMargin;
         float travelledXDistance = x < halfScreenWidth ? halfXDistance - x - xErrorMargin : x - halfScreenWidth - xErrorMargin;
@@ -402,7 +401,7 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
         } else {
             x = Math.min(screenWidth, x + applicableXErrorMargin);
         }
-*/
+
         long millisSinceLastTouch = System.currentTimeMillis() - xyTime;
         boolean outlierX = false;
         boolean outlierY = false;
@@ -575,8 +574,7 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
         }
         int x = (int) ((originalX / 2030f) * screenWidth);
         int y = (int) ((originalY / 2100f) * screenHeight);
-        int applicableXErrorMargin=0;int applicableYErrorMargin=0;
-        /*
+
         int yErrorMargin = 24; // TODO make parameter
         float halfYDistance = halfScreenHeight - yErrorMargin;
         float travelledYDistance = y < halfScreenHeight ? halfYDistance - y - yErrorMargin : y - halfScreenHeight - yErrorMargin;
@@ -603,13 +601,13 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
         if (inverseY) {
             y = (int) (y < halfScreenHeight ? halfScreenHeight + (Math.abs(halfScreenHeight - y)) : halfScreenHeight - (Math.abs(halfScreenHeight - y)));
         }
-*/
+
         long millisSinceLastTouch = System.currentTimeMillis() - xyTime;
         boolean outlierX = false;
         boolean outlierY = false;
         boolean shiverring = false;
         boolean keepsPressing = press && mIsPressing;
-/*        if (keepsPressing && !mOutlinerDetected) {
+        if (keepsPressing && !mOutlinerDetected) {
             boolean fastXyTracking = millisSinceLastTouch <= 50;
             if (fastXyTracking && cX != -1) {
                 int xOffset = Math.abs(x - cX);
@@ -633,7 +631,7 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
             }
         }
         mOutlinerDetected = outlierX || outlierY;
-*/
+
         if (press) {
             Log.v(LOG_TAG, "x,y=" + originalX + "," + originalY + " | x,y=" + x + "," + y + " | cx,cy=" + cX + "," + cY + " | dx,dy=" + applicableXErrorMargin + "," + applicableYErrorMargin + " (" + millisSinceLastTouch + "ms)" + (outlierX ? " CORRECTED-X!!!" : "") + (outlierY ? " CORRECTED-Y!!!" : "") + (shiverring ? " SHIVERRING!!!" : ""));
         } else if (mIsPressing && !press) {
