@@ -30,4 +30,4 @@ Next you need a `eu.vranckaert.driver.touch.profile.DriverProfile` which needs a
 There's a demo module to test your drivers immediately. The demo contains a splash screen, some default Android controls ideally to test touch inputs (a slider, a switch and buttons) and a 'Touch Debugging' mode, when enabled drives a circle on the touch position that you discover from the display. This way you can almost perfect calibrate the driver against the specific display!
 
 ## Contributing
-I would like to see new drivers added to this library. So please let me knonw or please contribute to the code base to get your dirver added!
+I would like to see new drivers added to this library. So please let me know or please contribute to the code base to get your dirver added!
