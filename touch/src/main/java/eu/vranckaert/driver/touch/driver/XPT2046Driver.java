@@ -381,6 +381,7 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
         float halfScreenWidth = screenWidth / 2f;
         float halfScreenHeight = screenHeight / 2f;
 
+
         int yErrorMargin = 24;
         float halfYDistance = halfScreenHeight - yErrorMargin;
         float travelledYDistance = y < halfScreenHeight ? halfYDistance - y - yErrorMargin : y - halfScreenHeight - yErrorMargin;

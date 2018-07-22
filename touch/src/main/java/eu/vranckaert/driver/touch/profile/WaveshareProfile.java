@@ -15,7 +15,7 @@ public class WaveshareProfile extends SPIDriverProfile implements Serializable {
     public static WaveshareProfile INSTANCE;
 
     public WaveshareProfile(ScreenDimension screenDimension) {
-        super("Waveshare 5\" Driver", Vendor.WAVESHARE, screenDimension);
+        super("Waveshare_5_Driver", Vendor.WAVESHARE, screenDimension);
     }
 
     public static WaveshareProfile getInstance(ScreenDimension screenDimension) {
