@@ -1,8 +1,11 @@
 package eu.vranckaert.driver.touch;
 
+import android.app.Notification;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 
 import eu.vranckaert.driver.touch.driver.Driver;
 import eu.vranckaert.driver.touch.profile.DriverProfile;
@@ -38,9 +41,24 @@ public class TouchScreenDriverService extends Service {
     public void onCreate() {
         super.onCreate();
 
+
+        Notification x  = new Notification();
+
+        startForeground(1337, buildNotification(this));
+
         //spilcdInitTouch(TOUCH_XPT2046, 1, 50000);
         // 1 = channel
         // 50000 = frequency
+    }
+
+    static Notification buildNotification(Context ctxt) {
+        NotificationCompat.Builder b=new NotificationCompat.Builder(ctxt)
+                .setOngoing(true)
+                .setContentTitle("hello")
+                .setContentText("world")
+                .setSmallIcon(android.R.drawable.stat_sys_warning);
+
+        return(b.build());
     }
 
     @Override
