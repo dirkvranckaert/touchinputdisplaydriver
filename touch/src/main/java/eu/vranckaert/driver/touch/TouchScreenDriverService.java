@@ -33,15 +33,6 @@ public class TouchScreenDriverService extends Service {
 
         mDriver = mDriverProfile.getDriver();
         mDriver.run();
-
-        Notification notification = new Notification.Builder(getApplicationContext())
-                .setChannelId("touchscrenn_display")
-                .setContentTitle("Start touch screen")
-                .setContentText("Start touch screen driver as Service.")
-                .setSmallIcon(1)
-                .build();
-        startForeground(2,notification);
-
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -49,8 +40,6 @@ public class TouchScreenDriverService extends Service {
     public void onCreate() {
         super.onCreate();
 
-
-        Notification x  = new Notification();
 
         startForeground(1337, buildNotification(this));
 
