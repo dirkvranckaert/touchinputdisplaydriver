@@ -64,7 +64,7 @@ public abstract class Driver implements Serializable {
                 while (!mInputThread.isInterrupted() && !mStopped) {
                     try {
                         TouchInput touchInput = getTouchInput();
-                        if (mPrevTouchInput == null || mPrevTouchInput.x != touchInput.x || mPrevTouchInput.y != touchInput.y || mPrevTouchInput.touching != touchInput.touching) {
+                        if (touchInput != null && (mPrevTouchInput == null || mPrevTouchInput.x != touchInput.x || mPrevTouchInput.y != touchInput.y || mPrevTouchInput.touching != touchInput.touching)) {
                             mEvent.clear();
                             mEvent.setPosition(MotionEvent.AXIS_X, touchInput.touching ? touchInput.x : mPrevTouchInput.x);
                             mEvent.setPosition(MotionEvent.AXIS_Y, touchInput.touching ? touchInput.y : mPrevTouchInput.y);
