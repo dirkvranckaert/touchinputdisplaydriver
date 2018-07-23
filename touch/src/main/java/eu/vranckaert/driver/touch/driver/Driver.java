@@ -27,7 +27,7 @@ public abstract class Driver implements Serializable {
     private InputDriver mInputDriver;
     private Thread mInputThread;
     private InputDriverEvent mEvent;
-    private TouchInput mPrevTouchInput = new TouchInput(0,0,mStopped);
+    private TouchInput mPrevTouchInput = new TouchInput(0,0,false);
 
     public Driver(DriverProfile driverProfile) {
         this.driverProfile = driverProfile;
