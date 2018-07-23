@@ -1,0 +1,21 @@
+{
+    "title": "XPT2046",
+    "category": "Touch input display",
+    "published-maven": {
+        "maven-url": "https://bintray.com",
+        "groupid": "eu.vranckaert.driver",
+        "artifactid": "touch"
+    },
+    "compatible-with": [
+        {
+            "title": "Kedei TFT 3.5-inch touch screen display",
+            "url": "https://www.aliexpress.com/item/Best-Price-Original-3-5-LCD-TFT-Touch-Screen-Display-for-Raspberry-Pi-2-Model/32443379727.html",
+            "photo": "https://ae01.alicdn.com/kf/HTB1ZsmzJXXXXXXVaXXXq6xXFXXXr/3-5-LCD-TFT-Touch-Screen-Display-for-Raspberry-Pi-3-Raspberry-Pi-2-Model-B.jpg"
+        },
+        {
+            "title": "Waveshare 5-inch touch screen display",
+            "url": "https://www.waveshare.com/5inch-hdmi-lcd-h.htm",
+            "photo": "https://www.waveshare.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/5/i/5inch_hdmi_lcd_h_.jpg"
+        }
+    ]
+}
