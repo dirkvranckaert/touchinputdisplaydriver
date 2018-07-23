@@ -2,7 +2,7 @@ package eu.vranckaert.driver.touch.driver;
 
 import android.util.Log;
 
-import com.google.android.things.pio.PeripheralManagerService;
+import com.google.android.things.pio.PeripheralManager;
 import com.google.android.things.pio.SpiDevice;
 
 import java.io.IOException;
@@ -70,7 +70,7 @@ public abstract class XPT2046Driver extends SpiDriver implements Serializable {
 
     @Override
     public void open() throws UnableToOpenTouchDriverException {
-        PeripheralManagerService spiService = new PeripheralManagerService();
+        PeripheralManager spiService = PeripheralManager.getInstance();
         List<String> deviceList = spiService.getSpiBusList();
         if (!deviceList.isEmpty()) {
             Log.i(LOG_TAG, "List of available SPI devices: " + deviceList);

@@ -4,6 +4,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import com.google.android.things.userdriver.UserDriverManager;
+import com.google.android.things.userdriver.input.InputDriver;
+
 import eu.vranckaert.driver.touch.driver.Driver;
 import eu.vranckaert.driver.touch.profile.DriverProfile;
 
@@ -20,6 +23,7 @@ public class TouchScreenDriverService extends Service {
 
     private DriverProfile mDriverProfile;
     private Driver mDriver;
+    private InputDriver mInputDriver;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -29,7 +33,7 @@ public class TouchScreenDriverService extends Service {
         }
 
         mDriver = mDriverProfile.getDriver();
-        mDriver.run();
+        mInputDriver = mDriver.run();
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -49,6 +53,9 @@ public class TouchScreenDriverService extends Service {
 
         if (mDriver != null) {
             mDriver.close();
+        }
+        if (mInputDriver != null) {
+            UserDriverManager.getInstance().unregisterInputDriver(mInputDriver);
         }
     }
 
