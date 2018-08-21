@@ -9,8 +9,8 @@ public abstract class DriverProfile implements Serializable {
     private final Vendor vendor;
     private final ScreenDimension screenDimension;
 
-    public DriverProfile(String name, Vendor vendor, ScreenDimension screenDimension) {
-        this.name = name;
+    public DriverProfile(Vendor vendor, ScreenDimension screenDimension) {
+        this.name = "AndroidTouchInputDriver";
         this.vendor = vendor;
         this.screenDimension = screenDimension;
     }

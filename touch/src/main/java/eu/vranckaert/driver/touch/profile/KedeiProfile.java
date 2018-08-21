@@ -15,7 +15,7 @@ public class KedeiProfile extends SPIDriverProfile implements Serializable {
     public static KedeiProfile INSTANCE;
 
     public KedeiProfile(ScreenDimension screenDimension) {
-        super("Waveshare 5\" Driver", Vendor.KEDEI, screenDimension);
+        super(Vendor.KEDEI, screenDimension);
     }
 
     public static KedeiProfile getInstance(ScreenDimension screenDimension) {

@@ -50,7 +50,7 @@ public abstract class Driver implements Serializable {
         }
 
         mInputDriver = new InputDriver.Builder()
-                .setName(driverProfile.getName() + " - " + getVersion())
+                .setName(driverProfile.getName())
                 .setAxisConfiguration(MotionEvent.AXIS_X, 0, driverProfile.getScreenDimension().getWidth(), 0, 0)
                 .setAxisConfiguration(MotionEvent.AXIS_Y, 0, driverProfile.getScreenDimension().getHeight(), 0, 0)
                 .build();

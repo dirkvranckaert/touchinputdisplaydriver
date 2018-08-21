@@ -6,6 +6,8 @@ The cheaper screens (mostly Chinese) are not supported for touch input. That's t
 Out of the box the following displays are supported, however the system is free and open to add your own driver:
 * Kedei HDMI (Tested with a 3.5")
 * Waveshare HDMI (Tested with a 5")
+## Prerequisites
+Before using the driver you need to make sure you have the Input Device Confguration file (.idc) installed on your Android things device. To do so mount the SD card of your Android Things device and in the root partition under `/system/usr/idc/` you should copy the AndroidTouchInputDriver.idc file that is available in the root of this project. If you do not copy that file the driver will work but Android will think that the driver is a physical mouse, which obviously results in totally different behaviour.
 ## Usage
 ### Gradle
 ```compile 'eu.vranckaert.driver:touch:1.0.1'```
