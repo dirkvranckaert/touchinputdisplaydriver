@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TouchInputLibrary.iml" filepath="$PROJECT_DIR$/TouchInputLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/touch/library.iml" filepath="$PROJECT_DIR$/touch/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/touch/touch.iml" filepath="$PROJECT_DIR$/touch/touch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/touchinputdisplaydriver.iml" filepath="$PROJECT_DIR$/touchinputdisplaydriver.iml" />
     </modules>
   </component>
 </project>
