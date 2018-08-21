@@ -11,7 +11,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -33,7 +33,7 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compileOnly 'com.google.android.things:androidthings:+'
+    implementation 'com.google.android.things:androidthings:+'
 
 }
 
@@ -83,7 +83,7 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 def siteUrl = 'https://github.com/dirkvranckaert/touchinputdisplaydriver'      // Homepage URL of the library
 def gitUrl = 'https://github.com/dirkvranckaert/touchinputdisplaydriver.git'   // Git repository URL
 group = "eu.vranckaert.driver"                      // Maven Group ID for the artifact
-project.version = "1.0.1"
+project.version = "1.1.0"
 
 //install {
 //    repositories.mavenInstaller {

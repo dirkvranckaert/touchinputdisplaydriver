@@ -1,8 +1,8 @@
 {
-    "title": "XPT2046",
+    "title": "android-touchscreen-driver",
     "category": "Touch input display",
     "published-maven": {
-        "maven-url": "https://bintray.com",
+        "maven-url": "https://jcenter.bintray.com",
         "groupid": "eu.vranckaert.driver",
         "artifactid": "touch"
     },
