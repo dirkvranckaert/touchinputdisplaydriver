@@ -1,4 +1,4 @@
-# Touch Input Display Drivern for Android Things
+# Touch Input Display Driver for Android Things
 ## Android Things and touch input displays
 For the Raspberry Pi 3 the Android Things platform so far only supports the official RPi screen to be used with the touch input.
 The cheaper screens (mostly Chinese) are not supported for touch input. That's the reason for creating this library. Initially I had only two screens: A 3.5" Kedei and a 5" Waveshare screen. Both are using the XPT2046 touch controller.
@@ -6,11 +6,11 @@ The cheaper screens (mostly Chinese) are not supported for touch input. That's t
 Out of the box the following displays are supported, however the system is free and open to add your own driver:
 * Kedei HDMI (Tested with a 3.5")
 * Waveshare HDMI (Tested with a 5")
-## Prerequisites
-Before using the driver you need to make sure you have the Input Device Confguration file (.idc) installed on your Android things device. To do so mount the SD card of your Android Things device and in the root partition under `/system/usr/idc/` you should copy the AndroidTouchInputDriver.idc file that is available in the root of this project. If you do not copy that file the driver will work but Android will think that the driver is a physical mouse, which obviously results in totally different behaviour.
 ## Usage
+### Prerequisites
+Before using the driver you need to make sure you have the Input Device Confguration file (.idc) installed on your Android things device. To do so mount the SD card of your Android Things device and in the root partition under `/system/usr/idc/` you should copy the AndroidTouchInputDriver.idc file that is available in the root of this project. If you do not copy that file the driver will work but Android will think that the driver is a physical mouse, which obviously results in totally different behaviour.
 ### Gradle
-```compile 'eu.vranckaert.driver:touch:1.0.1'```
+```compile 'eu.vranckaert.driver:touch:1.1.0'```
 ### Default drivers
 You can use the library in two different ways:
 
