@@ -2,6 +2,7 @@ package eu.vranckaert.driver.touch.demo;
 
 import eu.vranckaert.driver.touch.TouchScreenDriverApplication;
 import eu.vranckaert.driver.touch.profile.DriverProfile;
+import eu.vranckaert.driver.touch.profile.KumanDriverProfile;
 import eu.vranckaert.driver.touch.profile.WaveshareProfile;
 
 /**
@@ -11,6 +12,6 @@ import eu.vranckaert.driver.touch.profile.WaveshareProfile;
 public class ThingsApplication extends TouchScreenDriverApplication {
     @Override
     public DriverProfile getDriverProfile() {
-        return WaveshareProfile.getInstance(WaveshareProfile.DIMENSION_800_480);
+        return KumanDriverProfile.getInstance(KumanDriverProfile.DIMENSION_1920_1080);
     }
 }
